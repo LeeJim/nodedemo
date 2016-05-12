@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		clean: {
 			common: {
-				src:['dist','!dist/lib/*']
+				src:['dist/{css,img}/*', 'dist/*.html']
 			}
 		},
 
@@ -26,6 +26,14 @@ module.exports = function(grunt) {
 					cwd:'lib/',
 					src:'**',
 					dest:'dist/lib',
+				}]
+			},
+			image: {
+				files:[{
+					expand:true,
+					cwd:'src/img',
+					src:'**',
+					dest:'dist/img',
 				}]
 			}
 		},
@@ -72,7 +80,7 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			dist: {
+			style: {
 				files: ['src/css/{,*/}*.less'],
 				tasks: ['newer:less:dist']
 			},
@@ -83,6 +91,16 @@ module.exports = function(grunt) {
 			jade: {
 				files: ['views/{,*/}*.jade'],
 				tasks: ['jade']
+			},
+			copyImage: {
+				files: ['src/img/**'],
+				tasks: ['copy:image']
+			},
+			options: {
+				livereload: {
+					host:'localhost',
+					port:3000
+				}
 			}
 		}
 	});
