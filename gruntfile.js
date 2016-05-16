@@ -51,9 +51,12 @@ module.exports = function(grunt) {
 		},
 
 		connect: {
+			options: {
+				port: 3000,
+				livereload: 43998
+			},
 	    server: {
 	      options: {
-	        port: 3000,
 	        open:true,
 	        hostname: '*',
 	        base: './dist'
@@ -96,12 +99,12 @@ module.exports = function(grunt) {
 				files: ['src/img/**'],
 				tasks: ['copy:image']
 			},
-			options: {
-				livereload: {
-					host:'localhost',
-					port:3000
-				}
-			}
+			livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
+        files:['dist/{,*/}*']
+      }
 		}
 	});
 
