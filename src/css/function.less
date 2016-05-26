@@ -1,0 +1,13 @@
+/**
+ * function.less
+ * less函数定义
+ *
+ * author: qiulijun
+ */
+
+
+@baseFontSize: 100px;
+
+.px2rem(@which, @size) {
+  @{which}: 1rem * ( @size / @baseFontSize )
+}

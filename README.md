@@ -1,2 +1,0 @@
-# nodedemo
-node demo
